@@ -205,7 +205,7 @@ cat > "${CONTENTS_PATH}/Info.plist" <<PLIST
   <key>LSMinimumSystemVersion</key>
   <string>${MIN_MACOS}</string>
   <key>LSUIElement</key>
-  <false/>
+  <true/>
   <key>NSHighResolutionCapable</key>
   <true/>
 </dict>

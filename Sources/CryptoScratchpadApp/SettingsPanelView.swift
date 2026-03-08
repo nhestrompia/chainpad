@@ -128,7 +128,7 @@ struct SettingsPanelView: View {
     }
 
     private var sidebar: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 5) {
             Text("ChainPad Settings")
                 .font(.headline)
                 .padding(.horizontal, 6)
@@ -144,24 +144,25 @@ struct SettingsPanelView: View {
                 NSApp.terminate(nil)
             } label: {
                 Label("Quit App", systemImage: "power.circle.fill")
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 6)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.red.opacity(0.10))
+                    )
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.red.opacity(0.10))
-            )
             .nativeToolTip("Quit App")
         }
         .padding(8)
         .frame(width: 218)
         .frame(maxHeight: .infinity, alignment: .topLeading)
         .background(
-                RoundedRectangle(cornerRadius: 14)
-                    .fill(Color.secondary.opacity(0.11))
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.secondary.opacity(0.11))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 14)

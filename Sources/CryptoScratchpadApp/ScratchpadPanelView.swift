@@ -52,7 +52,6 @@ struct ScratchpadPanelView: View {
             .buttonStyle(.bordered)
 
             Button("Settings") {
-                NSApp.keyWindow?.close()
                 DispatchQueue.main.async {
                     openSettings()
                     SettingsWindowPresenter.bringToFrontSoon()
