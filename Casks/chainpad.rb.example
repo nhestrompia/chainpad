@@ -1,0 +1,18 @@
+cask "chainpad" do
+  version "REPLACE_WITH_VERSION"
+  sha256 "REPLACE_WITH_SHA256"
+
+  url "https://github.com/REPLACE_WITH_OWNER/REPO/releases/download/v#{version}/ChainPad-#{version}.app.zip"
+  name "ChainPad"
+  desc "Menu bar crypto clipboard scratchpad"
+  homepage "https://github.com/REPLACE_WITH_OWNER/REPO"
+
+  depends_on macos: ">= :sonoma"
+
+  app "ChainPad.app"
+
+  zap trash: [
+    "~/Library/Application Support/ChainPad",
+    "~/Library/Preferences/com.chainpad.app.plist",
+  ]
+end

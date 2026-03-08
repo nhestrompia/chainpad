@@ -1,0 +1,34 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-macos:
+    runs-on: macos-14
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build release artifacts
+        id: build
+        run: |
+          chmod +x scripts/package-macos-app.sh
+          VERSION="${GITHUB_REF_NAME#v}"
+          ./scripts/package-macos-app.sh --version "$VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/ChainPad-${{ steps.build.outputs.version }}.app.zip
+            dist/ChainPad-${{ steps.build.outputs.version }}.pkg
+            dist/checksums.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
