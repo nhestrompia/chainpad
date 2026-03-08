@@ -6,5 +6,7 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
-dist/
+dist/Chainpad.app
+dist/Chainpad-*nhestrompia
+dist/checksums.txt
 release/
