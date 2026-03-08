@@ -55,11 +55,29 @@ You can install the `.pkg` directly on macOS, or distribute the `.app.zip` for H
 
 ## Maintainer notes
 
-If you publish a new release:
+### One-command release pipeline
 
-1. Upload `ChainPad-<version>.app.zip` to the GitHub release.
-2. Update `Casks/chainpad.rb` `version` and `sha256`.
-3. Commit and push the cask update so `brew` installs the new artifact.
+Use the release script to build, sign, notarize, staple, repack, and update cask SHA/version in one run:
+
+```bash
+./scripts/release-macos.sh --version 0.1.3
+```
+
+Optional flags:
+
+```bash
+./scripts/release-macos.sh \
+  --version 0.1.3 \
+  --create-tag \
+  --push-tag \
+  --upload-release
+```
+
+Notes:
+
+- `--upload-release` requires GitHub CLI (`brew install gh` + `gh auth login`).
+- Script expects a valid `Developer ID Application` cert and `notarytool` profile (default: `chainpad-notary`).
+- It updates `Casks/chainpad.rb` automatically with the final notarized ZIP SHA.
 
 ## Development
 
@@ -70,7 +88,7 @@ swift test
 
 ## Release workflow
 
-Tag and push a version to trigger the macOS release build workflow:
+Tag and push a version to trigger the CI release workflow:
 
 ```bash
 git tag v0.1.0
