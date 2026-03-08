@@ -4,6 +4,10 @@ import SwiftData
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
     }
@@ -35,8 +39,7 @@ struct CryptoScratchpadApp: App {
         let settings = SettingsStore()
         if settings.autoOpenOnLaunch {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NSApp.activate(ignoringOtherApps: true)
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                SettingsWindowPresenter.show()
             }
         }
         let monitor = PollingClipboardMonitor(maxTextLength: 2_048, pollInterval: 0.5)

@@ -54,6 +54,7 @@ struct ScratchpadPanelView: View {
             Button("Settings") {
                 NSApp.keyWindow?.close()
                 openSettings()
+                SettingsWindowPresenter.bringToFrontSoon()
             }
             .buttonStyle(.borderedProminent)
         }

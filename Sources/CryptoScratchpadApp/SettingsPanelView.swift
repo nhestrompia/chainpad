@@ -115,11 +115,11 @@ struct SettingsPanelView: View {
     }
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 10) {
             sidebar
             contentPane
         }
-        .padding(14)
+        .padding(10)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .onAppear {
             syncTTLFromSettings()
@@ -128,11 +128,11 @@ struct SettingsPanelView: View {
     }
 
     private var sidebar: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("ChainPad Settings")
                 .font(.headline)
-                .padding(.horizontal, 8)
-                .padding(.bottom, 4)
+                .padding(.horizontal, 6)
+                .padding(.bottom, 2)
 
             sidebarButton(.general, title: "General", icon: "gearshape.fill")
             sidebarButton(.quickActions, title: "Quick Actions", icon: "bolt.circle")
@@ -146,25 +146,25 @@ struct SettingsPanelView: View {
                 Label("Quit App", systemImage: "power.circle.fill")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(.red)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 8)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
             }
             .buttonStyle(.plain)
             .background(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 8)
                     .fill(Color.red.opacity(0.10))
             )
             .nativeToolTip("Quit App")
         }
-        .padding(12)
-        .frame(width: 245)
+        .padding(8)
+        .frame(width: 218)
         .frame(maxHeight: .infinity, alignment: .topLeading)
         .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.secondary.opacity(0.11))
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(Color.secondary.opacity(0.11))
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 14)
                 .stroke(Color.secondary.opacity(0.25), lineWidth: 1)
         )
     }
@@ -435,13 +435,13 @@ struct SettingsPanelView: View {
         } label: {
             Label(title, systemImage: icon)
                 .font(.headline)
-                .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
-                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity, minHeight: 34, alignment: .leading)
+                .padding(.horizontal, 8)
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
                 .fill(selectedTab == tab ? Color.accentColor : Color.clear)
         )
         .foregroundStyle(selectedTab == tab ? Color.white : Color.primary)
