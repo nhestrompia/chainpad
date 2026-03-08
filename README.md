@@ -6,25 +6,35 @@ ChainPad is a macOS menu bar utility that captures copied crypto objects (tokens
 
 ### Homebrew (recommended)
 
-ChainPad should be distributed as a Homebrew **cask** (standard for GUI/menu bar apps).
-
-1. Create a GitHub release artifact (`ChainPad-<version>.app.zip`) using the packaging script below.
-2. Generate/update your cask file:
-
 ```bash
-./scripts/generate-homebrew-cask.sh \
-  --version 0.1.0 \
-  --sha256 <zip_sha256> \
-  --repo <owner>/<repo>
+brew tap nhestrompia/chainpad https://github.com/nhestrompia/chainpad
+brew install --cask nhestrompia/chainpad/chainpad
 ```
 
-3. Commit the generated `Casks/chainpad.rb` to your tap repo.
-4. Install:
+Launch:
 
 ```bash
-brew tap <owner>/<tap-repo>
-brew install --cask chainpad
+open -a ChainPad
 ```
+
+Update:
+
+```bash
+brew update
+brew upgrade --cask nhestrompia/chainpad/chainpad
+```
+
+Uninstall:
+
+```bash
+brew uninstall --cask nhestrompia/chainpad/chainpad
+```
+
+### Direct download
+
+Download the latest release asset from GitHub Releases:
+
+<https://github.com/nhestrompia/chainpad/releases/latest>
 
 ### Local package build
 
@@ -42,6 +52,14 @@ Artifacts are written to `dist/`:
 - `checksums.txt`
 
 You can install the `.pkg` directly on macOS, or distribute the `.app.zip` for Homebrew cask installs.
+
+## Maintainer notes
+
+If you publish a new release:
+
+1. Upload `ChainPad-<version>.app.zip` to the GitHub release.
+2. Update `Casks/chainpad.rb` `version` and `sha256`.
+3. Commit and push the cask update so `brew` installs the new artifact.
 
 ## Development
 
