@@ -53,8 +53,10 @@ struct ScratchpadPanelView: View {
 
             Button("Settings") {
                 NSApp.keyWindow?.close()
-                openSettings()
-                SettingsWindowPresenter.bringToFrontSoon()
+                DispatchQueue.main.async {
+                    openSettings()
+                    SettingsWindowPresenter.bringToFrontSoon()
+                }
             }
             .buttonStyle(.borderedProminent)
         }

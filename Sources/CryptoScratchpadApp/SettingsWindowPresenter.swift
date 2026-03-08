@@ -10,8 +10,10 @@ enum SettingsWindowPresenter {
 
     @MainActor
     static func bringToFrontSoon() {
+        NSApp.activate(ignoringOtherApps: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
             guard let window = settingsWindow else { return }
+            NSApp.activate(ignoringOtherApps: true)
             window.collectionBehavior.insert(.moveToActiveSpace)
             window.level = .normal
             window.makeKeyAndOrderFront(nil)
