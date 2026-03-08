@@ -1,6 +1,6 @@
 cask "chainpad" do
-  version "0.1.2"
-  sha256 "836f2538c39f4042a626a7bdfc8704d9d9e7f7f3ad26b285149c861ea2c03fd8"
+  version "0.1.3"
+  sha256 "56377d9e74924a5867164b2099875ad40b3b7f6a691f17e216cf6ba8eca5573c"
 
   url "https://github.com/nhestrompia/chainpad/releases/download/v#{version}/ChainPad-#{version}.app.zip"
   name "ChainPad"
